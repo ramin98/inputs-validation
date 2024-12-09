@@ -29,10 +29,14 @@ function App() {
   // let passwordChecked = passwordChecker.test(inputs.password);
 
   let loginChecker = [
-    [/^[a-z]/.test(inputs.login), 'FIRST SYBOLS MUST LOWER CASE'],
-    [/[a-z0-9._]*/.test(inputs.login), 'MUST BE ONLY WORDS, NUMBRES, . AND _'],
-    [/^[a-z][a-z0-9._]{7,}$/.test(inputs.login), 'MORE THAN 8']
-  ];
+    [inputs.password !== '' && /^[A-Z]/.test(inputs.password), 'Первая буква должна быть заглавной (остальные буквы маленькие)'],
+    [inputs.password !== '' && /^.{9,}$/.test(inputs.password), 'Длина должна быть больше 8 символов'],
+    [inputs.password !== '' && /^[A-Za-z0-9_.]+$/.test(inputs.password), 'Не допускаются символы, кроме букв, цифр, _ и .'],
+    [inputs.password !== '' && /^[A-Za-z]/.test(inputs.password), 'Первый символ должен быть буквой:'],
+    [inputs.password !== '' && /^\S+$/.test(inputs.password), 'Не допускается пустая строка или пробелы между символами:'],
+    [inputs.password !== '', 'THERE IS NO VALUE IN INPUT']
+
+  ]
   let nameChecker = [
     [/^[A-Z]/.test(inputs.name),'FIRST SYBOLS MUST UPPER CASE'],
     [/[a-z]*$/.test(inputs.name),'OTHER SYBOLS MUST LOWER CASE'],
@@ -47,11 +51,14 @@ function App() {
     [/\.[a-zA-Z]{2,}$/.test(inputs.email), 'MUST BE 2 LETTER AFTER DOT'],
   ];
   let passwordChecker = [
-    [/^[A-Z]/.test(inputs.password), 'FIRST SYBOLS MUST UPPER CASE'],
-    [/[a-z0-9._]*/.test(inputs.password), 'MUST BE ONLY WORDS, NUMBRES, . AND _'],
-    [/^[A-Z][a-z0-9._]{7,}$/.test(inputs.password), 'MORE THAN 8']
-  ];
+    [inputs.password !== '' && /^[A-Z]/.test(inputs.password), 'Первая буква должна быть заглавной (остальные буквы маленькие)'],
+    [inputs.password !== '' && /^.{9,}$/.test(inputs.password), 'Длина должна быть больше 8 символов'],
+    [inputs.password !== '' && /^[A-Za-z0-9_.]+$/.test(inputs.password), 'Не допускаются символы, кроме букв, цифр, _ и .'],
+    [inputs.password !== '' && /^[A-Za-z]/.test(inputs.password), 'Первый символ должен быть буквой:'],
+    [inputs.password !== '' && /^\S+$/.test(inputs.password), 'Не допускается пустая строка или пробелы между символами:'],
+    [inputs.password !== '', 'THERE IS NO VALUE IN INPUT']
 
+  ]
 
   // const checkValues = () => {
   //   if (
